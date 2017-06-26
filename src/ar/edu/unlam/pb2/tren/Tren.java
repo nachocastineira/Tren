@@ -1,6 +1,7 @@
 package ar.edu.unlam.pb2.tren;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 
 public class Tren {
@@ -11,11 +12,6 @@ public class Tren {
 	private ArrayList <Vagon> vagones = new ArrayList <Vagon>();
 
 	
-	public Tren ()
-	{
-		this.locomotora = new Locomotora(null, null);
-	}
-	
 	
 	
 	//metodos
@@ -25,17 +21,25 @@ public class Tren {
 		return vagones.size();
 	}
 	
-	public ArrayList <Vagon> mostrarVagones()
-	{
-		return vagones;
-	}
-	
-	public void admitirVagon (Vagon vagon)
-	{
-		vagones.add(vagon);
-	}
-	
 
+	
+	public void admitirVagon (Vagon vagon) throws Exception
+	{
+		
+
+		if((calcularCargaTotal()+vagon.getCargaPermitida())<=locomotora.getCargaMaxima() )
+		{
+			vagones.add(vagon);
+		}
+		else
+		{	
+
+			throw new Exception("La carga maxima de locomotora está excedida");			
+		}
+	}
+	
+	
+	
 
 	//getters y setters
 
@@ -59,6 +63,26 @@ public class Tren {
 
 	public void setLocomotora(Locomotora locomotora) {
 		this.locomotora = locomotora;
+	}
+
+
+
+	//metodo que suma la carga total de los vagones
+	public Integer calcularCargaTotal(){
+
+		Iterator <Vagon> it = vagones.iterator();  //para recorrer coleccion
+
+		Integer cargaDelTren = 0;
+
+		while (it.hasNext()){  //mientras haya un prox elemento itero
+
+			Vagon vagon = it.next();  //obtengo un vagon
+			
+			cargaDelTren = cargaDelTren + vagon.getCargaPermitida();
+			 
+		}
+		
+	   return cargaDelTren;
 	}
 
 

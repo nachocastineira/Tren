@@ -7,22 +7,57 @@ import org.junit.Test;
 public class TestTren {
 
 	@Test
-	public void test() {
+	public void testQueAgregaVagones() throws Exception {
 		Tren miTren = new Tren();
-		Locomotora miLocomotora = new Locomotora("A", 2006);
-		Vagon miVagon1 = new Vagon(40);
-		Vagon miVagon2 = new Vagon(60);
-		Vagon miVagon3 = new Vagon(50);
-		
+		Locomotora miLocomotora = new Locomotora("Fiat", 2000, 200);
+		Vagon miVagon1 = new Vagon(10);
+		Vagon miVagon2 = new Vagon(20);
 
 		miTren.setLocomotora(miLocomotora);
+		
 		miTren.admitirVagon(miVagon1);
 		miTren.admitirVagon(miVagon2);
-		miTren.admitirVagon(miVagon3);
-		
-		assertEquals(miTren.contarCantidadDeVagones(), 3, 0);
-		assertEquals(miVagon1.getCantidadDeAsientos(), 40, 0);
 
+		
+		assertEquals(miTren.contarCantidadDeVagones(), 2, 0);
+	}
+	
+	@Test 
+	public void testQueCuentaPesoDeLosVagones() throws Exception{
+		Tren miTren = new Tren();
+		Locomotora miLocomotora = new Locomotora("Fiat", 2000, 200);
+		Vagon miVagon1 = new Vagon(10);
+		Vagon miVagon2 = new Vagon(20);
+
+		miTren.setLocomotora(miLocomotora);
+		
+		miTren.admitirVagon(miVagon1);
+		miTren.admitirVagon(miVagon2);
+		
+		Integer pesoDelTren = miTren.calcularCargaTotal(); //igualo el metodo a una variable
+		assertEquals(30, pesoDelTren, 0);
+	
+	}
+	
+	
+	@Test (expected = Exception.class) //solo se pone en los que tienen excepciones, para que no caiga el programa
+	
+	public void testQueNoSeAceptenMasVagonesDeLaCargaPermitida()  throws Exception{
+		Tren miTren = new Tren();
+		Locomotora miLocomotora = new Locomotora("Fiat", 2000, 50); //el peso maxima de la locomotora es 50
+		Vagon miVagon1 = new Vagon(20);
+		Vagon miVagon2 = new Vagon(50);
+
+		miTren.setLocomotora(miLocomotora);
+		
+		
+		miTren.admitirVagon(miVagon1); //agrego un vagon
+		miTren.admitirVagon(miVagon2); //agrego un vagon y ya se pasa el peso maximo
+		
+		
+		
+
+	
 	}
 
 }

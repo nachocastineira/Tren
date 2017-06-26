@@ -2,23 +2,23 @@ package ar.edu.unlam.pb2.tren;
 
 public class Vagon {
 	
-	private Integer cantidadDeAsientos;
+	private Integer cargaPermitida;
 	
-	public Vagon (Integer cantidadDeAsientos)
+	public Vagon (Integer cargaPermitida)
 	{
-		this.cantidadDeAsientos = cantidadDeAsientos;
+		this.cargaPermitida = cargaPermitida;
 	}
 
-	
+
 	//getter y setter
-	public Integer getCantidadDeAsientos() {
-		return cantidadDeAsientos;
+	
+	public Integer getCargaPermitida() {
+		return cargaPermitida;
 	}
 
-	public void setCantidadDeAsientos(Integer cantidadDeAsientos) {
-		this.cantidadDeAsientos = cantidadDeAsientos;
+	public void setCargaPermitida(Integer cargaPermitida) {
+		this.cargaPermitida = cargaPermitida;
 	}
-	
 	
 	
 	

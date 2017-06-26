@@ -4,12 +4,14 @@ public class Locomotora {
 	
 	private String modelo;
 	private Integer anioDeFabricacion;
+	private Integer cargaMaxima;
 	
 
-	public Locomotora (String modelo, Integer anioDeFabricacion)
+	public Locomotora (String modelo, Integer anioDeFabricacion, Integer cargaMaxima)
 	{
 		this.modelo = modelo;
 		this.anioDeFabricacion = anioDeFabricacion;
+		this.cargaMaxima = cargaMaxima;
 	}
 
 
@@ -32,11 +34,19 @@ public class Locomotora {
 	public void setAnioDeFabricacion(Integer anioDeFabricacion) {
 		this.anioDeFabricacion = anioDeFabricacion;
 	}
-	
-	
-	public int compareTo(Locomotora otro) {
-		return this.anioDeFabricacion.compareTo(otro.getAnioDeFabricacion());   //uso el metodo .compareTo
+
+
+	public Integer getCargaMaxima() {
+		return cargaMaxima;
 	}
+
+
+	public void setCargaMaxima(Integer cargaMaxima) {
+		this.cargaMaxima = cargaMaxima;
+	}
+	
+	
+
 	
 
 }
