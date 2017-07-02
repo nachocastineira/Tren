@@ -22,6 +22,33 @@ public class TestTren {
 		assertEquals(miTren.contarCantidadDeVagones(), 2, 0);
 	}
 	
+	@Test
+	public void testConExcepcionesTryCatch()  {
+		Tren miTren = new Tren();
+		Locomotora miLocomotora = new Locomotora("Fiat", 2000, 30);
+		Vagon miVagon1 = new Vagon(20);
+		Vagon miVagon2 = new Vagon(20);
+
+		miTren.setLocomotora(miLocomotora);
+		
+		
+		try{
+		miTren.admitirVagon(miVagon1);
+		miTren.admitirVagon(miVagon2);
+		}
+		catch (Exception e)
+		{
+			System.out.println("Se superó el limite de carga");
+		}
+		
+		assertEquals(miTren.contarCantidadDeVagones(), 1, 0);  //como se supero el peso maximo solo se acepta un vagon
+		
+	}
+	
+	
+	
+	
+	
 	@Test 
 	public void testQueCuentaPesoDeLosVagones() throws Exception{
 		Tren miTren = new Tren();
